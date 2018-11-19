@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<script src="dropdown.js"></script>
+
+<div class="navbar">
+  <a href="../home.html">Home</a>
+  <div class="dropdown">
+    <button class="dropbtn" onclick="dropdown()">Topics
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content" id="myDropdown">
+      <a href="topic1/topic1.html">1. Loops, Conditional Statements, Functions, Variables, Parameters, Arrays, Associative Arrays</a>
+      <a href="topic2/topic2.html">2. Object Creation Functions, Inheritance, Properties, Methods, Instantiation</a>
+      <a href="topic3/topic3.html">3. JSON Parse, Stringify</a>
+      <a href="topic4/topic4.html">4. Using XMLHTTPRequest to Consume a JSON Web Service</a>
+      <a href="topic5/topic5.html">5. Local Storage API, Storing and Retrieving Simple Data, Arrays, Associative Arrays, and Objects</a>
+      <a href="topic6/topic6.html">6. DOM Manipulation Using createElement, appendChild, insertBefore, removeChild, etc.</a>
+      <a href="topic7/topic7.html">7. Manipulating CSS Class Properties Using JavaScript</a>
+      <a href="topic8/topic8.html">8. Creating CSS3 Transitions and Animations in CSS and triggering them with JavaScript</a>
+      <a href="topic9/topic9.html">9. Standard JavaScript Events Including those for Mobile Devices ( Ex. onTouchBegin, onLoad, etc.) and Animation and Transition Events</a>
+      <a href="topic10/topic10/topic10.html">10. HTML5 Tags - Video, Audio, and Canvas</a>
+      <a href="topic11/topic11.html">11. Designing, Defining, and Triggering CSS3 Transitions without Custom Libraries (Thought Library)</a>
+    </div>
+  </div> 
+</div>
+
+<h1>How to XMLHTTP Request:</h1>
+
+<!--JSON goes here-->
+<h3>The JSON file is loaded into a JavaScript Array of objects, each object has a Title and URL, and output here:</h3>
+<div id="placeHere"></div>
+
+<script>
+var xmlhttp = new XMLHttpRequest();
+var url = "json.txt";
+
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        myFunction(myArr);
+    }
+};
+xmlhttp.open("GET", url, true);  //XMLHttpRequest.open(method, url, async)
+xmlhttp.send();
+
+//This function takes the array of objects, loops through it adding each value to the front of the string "out"
+function myFunction(arr) {
+    var out = "";
+    var i;
+    for(i = 0; i < arr.length; i++) {
+        out += '<a href="' + arr[i].url + '">' + 
+        arr[i].display + '</a><br>';
+    }
+    document.getElementById("placeHere").innerHTML = out;
+}
+</script>
+
+</body>
+</html>

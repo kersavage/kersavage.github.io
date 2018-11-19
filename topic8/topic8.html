@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+<style>
+#myContainer1 {
+  width: 600px;
+  height: 50px;
+  position: relative;
+  background: yellow;
+}
+#myAnimation1 {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: red;
+}
+
+#myContainer2 {
+  width: 600px;
+  height: 50px;
+  position: relative;
+  background: yellow;
+}
+#myAnimation2 {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: blue;
+}
+</style>
+
+<body>
+  <script src="dropdown.js"></script>
+<div class="navbar">
+  <a href="../home.html">Home</a>
+  <div class="dropdown">
+    <button class="dropbtn" onclick="dropdown()">Topics
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content" id="myDropdown">
+      <a href="topic1/topic1.html">1. Loops, Conditional Statements, Functions, Variables, Parameters, Arrays, Associative Arrays</a>
+      <a href="topic2/topic2.html">2. Object Creation Functions, Inheritance, Properties, Methods, Instantiation</a>
+      <a href="topic3/topic3.html">3. JSON Parse, Stringify</a>
+      <a href="topic4/topic4.html">4. Using XMLHTTPRequest to Consume a JSON Web Service</a>
+      <a href="topic5/topic5.html">5. Local Storage API, Storing and Retrieving Simple Data, Arrays, Associative Arrays, and Objects</a>
+      <a href="topic6/topic6.html">6. DOM Manipulation Using createElement, appendChild, insertBefore, removeChild, etc.</a>
+      <a href="topic7/topic7.html">7. Manipulating CSS Class Properties Using JavaScript</a>
+      <a href="topic8/topic8.html">8. Creating CSS3 Transitions and Animations in CSS and triggering them with JavaScript</a>
+      <a href="topic9/topic9.html">9. Standard JavaScript Events Including those for Mobile Devices ( Ex. onTouchBegin, onLoad, etc.) and Animation and Transition Events</a>
+      <a href="topic10/topic10/topic10.html">10. HTML5 Tags - Video, Audio, and Canvas</a>
+      <a href="topic11/topic11.html">11. Designing, Defining, and Triggering CSS3 Transitions without Custom Libraries (Thought Library)</a>
+    </div>
+  </div> 
+</div>
+
+<h3>Click the input box to begin, player one is space bar player two is enter key</h3>
+<input type="text" id="start" value="Click to Start" onkeypress="move(event)">
+
+<div id ="myContainer1">
+  <div id ="myAnimation1">
+  </div>
+</div>
+<hr>
+<div id ="myContainer2">
+  <div id ="myAnimation2">
+  </div>
+</div>
+
+<script>
+  var elem1 = document.getElementById("myAnimation1");
+  var elem2 = document.getElementById("myAnimation2"); 
+
+var pos1 = 0;
+var pos2 = 0;
+function move(e) {
+    
+  if(e.keyCode == 32) {
+    elem1.style.left = pos1 + '3px';
+    pos1+=3;
+    if (pos1 == 60)
+      alert("Player one wins");
+  }
+
+  if(e.keyCode == 13) {
+    elem2.style.left = pos2 + '3px';
+    pos2+=3;
+    if (pos2 == 60)
+      alert("Player two wins");
+  }
+}
+    
+</script>
+
+</body>
+</html>

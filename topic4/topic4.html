@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>How to XMLHTTP Request:</h1>
+
+<!--JSON goes here-->
+<h3>The JSON file is loaded into a JavaScript Array of objects, each object has a Title and URL, and output here:</h3>
+<div id="placeHere"></div>
+
+<script>
+var xmlhttp = new XMLHttpRequest();
+var url = "json.txt";
+
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        myFunction(myArr);
+    }
+};
+xmlhttp.open("GET", url, true);  //XMLHttpRequest.open(method, url, async)
+xmlhttp.send();
+
+//This function takes the array of objects, loops through it adding each value to the front of the string "out"
+function myFunction(arr) {
+    var out = "";
+    var i;
+    for(i = 0; i < arr.length; i++) {
+        out += '<a href="' + arr[i].url + '">' + 
+        arr[i].display + '</a><br>';
+    }
+    document.getElementById("placeHere").innerHTML = out;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<script src="dropdown.js"></script>
+
+<div class="navbar">
+  <a href="../home.html">Home</a>
+  <div class="dropdown">
+    <button class="dropbtn" onclick="dropdown()">Topics
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content" id="myDropdown">
+      <a href="topic1/topic1.html">1. Loops, Conditional Statements, Functions, Variables, Parameters, Arrays, Associative Arrays</a>
+      <a href="topic2/topic2.html">2. Object Creation Functions, Inheritance, Properties, Methods, Instantiation</a>
+      <a href="topic3/topic3.html">3. JSON Parse, Stringify</a>
+      <a href="topic4/topic4.html">4. Using XMLHTTPRequest to Consume a JSON Web Service</a>
+      <a href="topic5/topic5.html">5. Local Storage API, Storing and Retrieving Simple Data, Arrays, Associative Arrays, and Objects</a>
+      <a href="topic6/topic6.html">6. DOM Manipulation Using createElement, appendChild, insertBefore, removeChild, etc.</a>
+      <a href="topic7/topic7.html">7. Manipulating CSS Class Properties Using JavaScript</a>
+      <a href="topic8/topic8.html">8. Creating CSS3 Transitions and Animations in CSS and triggering them with JavaScript</a>
+      <a href="topic9/topic9.html">9. Standard JavaScript Events Including those for Mobile Devices ( Ex. onTouchBegin, onLoad, etc.) and Animation and Transition Events</a>
+      <a href="topic10/topic10/topic10.html">10. HTML5 Tags - Video, Audio, and Canvas</a>
+      <a href="topic11/topic11.html">11. Designing, Defining, and Triggering CSS3 Transitions without Custom Libraries (Thought Library)</a>
+    </div>
+  </div> 
+</div>
+
+<h1>JSON Stringify and Parse</h1>
+<h3>This page takes a JSON object and uses JSON.stringify to turn it into JSON data</h3>
+<h3>This is the raw JSON data</h3>
+<div id="demo"></div>
+<h3>This data will be saved in a file called json.txt, click save as(might only work in Microsoft Edge) and save it in the same folder as the
+.html files</h3>
+
+<button onclick="display();"><b>Click here to perform an xmlhttprequest and retrieve the JSON data saved in json.txt</b></button><br>
+
+<div id="placeHere"></div>
+
+<script>
+
+function display() {
+var xmlhttp = new XMLHttpRequest();
+var url = "json.txt";
+
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        myFunction(myArr);
+    }
+};
+xmlhttp.open("GET", url, true);  //XMLHttpRequest.open(method, url, async)
+xmlhttp.send();
+}
+
+//This function takes the array of objects, loops through it adding each value to the front of the string "out"
+function myFunction(arr) {
+    var out = "";
+    var i;
+    for(i = 0; i < arr.length; i++) {
+        out += '<a href="' + arr[i].url + '">' + 
+        arr[i].display + '</a><br>';
+    }
+    document.getElementById("placeHere").innerHTML = out;
+}
+
+var myObj = [{display: "JavaScript Tutorial",url: "https://www.w3schools.com/js/default.asp"},
+             {display: "HTML Tutorial",url: "https://www.w3schools.com/html/default.asp"},
+             {display: "CSS Tutorial",url: "https://www.w3schools.com/css/default.asp"}]
+
+var myJSON = JSON.stringify(myObj);
+
+document.getElementById("demo").innerHTML = myJSON;
+
+//This function saves the JSON data to your computer in a file called JSON.txt
+function download(content, fileName, contentType) {
+    var a = document.createElement("a");
+    var file = new Blob([content], {type: contentType});
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    a.click();
+}
+
+download(myJSON, 'json.txt', 'text/plain');
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+   <head>
+       <link rel="stylesheet" type="text/css" href="style.css">
+   </head>
+   
+   <script src="dropdown.js"></script>
+   <script src="week13.js"></script>
+
+<div class="navbar">
+  <a href="home.html">Home</a>
+  <div class="dropdown">
+    <button class="dropbtn" onclick="dropdown()">Topics
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content" id="myDropdown">
+      <a href="topic1.html">Loops, Conditional Statements, Functions, Variables, Parameters, Arrays, Associative Arrays</a>
+      <a href="topic2.html">Object Creation Functions, Inheritance, Properties, Methods, Instantiation</a>
+      <a href="topic3.html">JSON Parse, Stringify</a>
+      <a href="topic4.html">Using XMLHTTPRequest to Consume a JSON Web Service</a>
+      <a href="topic5.html">Local Storage API, Storing and Retrieving Simple Data, Arrays, Associative Arrays, and Objects</a>
+      <a href="topic6.html">DOM Manipulation Using createElement, appendChild, insertBefore, removeChild, etc.</a>
+      <a href="topic7.html">Manipulating CSS Class Properties Using JavaScript</a>
+      <a href="topic8.html">Creating CSS3 Transitions and Animations in CSS and triggering them with JavaScript</a>
+      <a href="topic9.html">Standard JavaScript Events Including those for Mobile Devices ( Ex. onTouchBegin, onLoad, etc.) and Animation and Transition Events</a>
+      <a href="topic10/topic10.html">HTML5 Tags - Video, Audio, and Canvas</a>
+      <a href="topic11.html">Designing, Defining, and Triggering CSS3 Transitions without Custom Libraries (Thought Library)</a>
+    </div>
+  </div> 
+</div>
+
+<div class="content">
+<h3 align="center">An embedded video uisng the video tag with both javascript controls and native html controls</h3>
+<div style="text-align:center"> 
+  <button onclick="playPause()">Play/Pause</button> 
+  <button onclick="makeBig()">Big</button>
+  <button onclick="makeSmall()">Small</button>
+  <button onclick="makeNormal()">Normal</button>
+  <br><br>
+
+  <video controls id="video1" width="420">
+    <source src="kygo.mp4" type="video/mp4">
+    <!-- You can add multiple sources<source src="kygo.ogg" type="video/ogg">-->
+    Your browser does not support HTML5 video.
+  </video>
+</div> 
+
+<h3> An audio file using the audio tag that can be played using the built in HTML controls</h3>
+<audio controls>
+  <source src="thekill.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+   <body onload="canvas()">
+      <br><h1>Canvas Demo</h1>
+      
+      <h2>About Canvas</h2>
+      <p>Canvas was initially introduced by Apple in 2004 to power various features in it's MAC OS and Safari browser. It slowly gained popularity and today is featured in all mainstream web browsers and in HTML5. Currently Canvas is an element used in HTML5 to create images, animations, and games.</p>
+      <p>Canvas is used by creating a canvas tag in your HTML document. It then utilizes JS functions to render the image. Canvas uses detailed pixels to render the image so it is very good at rendering graphics and games. The other alternative is SVG which is line based. SVG is better at rendering more simple designs that use mostly lines (i.e. text, shapes, etc.), and is much easier to program, on the downside it is not fit for complex graphics or games because it renders much slower than canvas.</p><br>
+      
+      <h2>Canvas Uses</h2>
+      <h3>Draw Text</h3>
+      <canvas id="text" width="300" height="200">Canvas is not displaying! Try enabling Java Script!</canvas>
+      
+      <h3>Display an Image</h3>
+      <canvas id="image" width="500" height="800">Canvas is not displaying! Try enabling Java Script!</canvas>
+      <img id="comic" width="0" height="0" src="comic.jpg">
+      
+      <h3>Display an Animation</h3>
+      <canvas id="animate" width="800" height="500">Canvas is not displaying! Try enabling Java Script!</canvas><br><br>
+
+      <script> 
+var myVideo = document.getElementById("video1"); 
+
+function playPause() { 
+    if (myVideo.paused) 
+        myVideo.play(); 
+    else 
+        myVideo.pause(); 
+} 
+
+function makeBig() { 
+    myVideo.width = 560; 
+} 
+
+function makeSmall() { 
+    myVideo.width = 320; 
+} 
+
+function makeNormal() { 
+    myVideo.width = 420; 
+} 
+</script> 
+      
+   </body>
+</html>
